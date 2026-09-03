@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Лицензии и исходные тексты — Game Triathlon</title>
+<meta name="description" content="Что входит в сборку Game Triathlon, под какими лицензиями и где взять исходные тексты.">
+<link rel="icon" href="assets/icon.png">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="top">
+  <a class="brand" href="index.html">
+    <img src="assets/icon.png" alt="" width="32" height="32">
+    <span>Game Triathlon</span>
+  </a>
+  <nav>
+    <a href="index.html">На главную</a>
+    <a href="https://github.com/gametriathlon" rel="noopener">GitHub</a>
+  </nav>
+</header>
+
+<main>
+
+<section class="hero" style="text-align:left">
+  <h1 style="margin-inline:0">Лицензии и исходные тексты</h1>
+  <p class="lede" style="margin-inline:0">
+    Game Triathlon распространяется под лицензией MIT, но несёт внутри себя чужие
+    свободные компоненты. Здесь перечислено, что именно, на каких условиях
+    и где взять их исходные тексты.
+  </p>
+</section>
+
+<section class="section">
+  <h2>Что входит в сборку</h2>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Компонент</th><th>Назначение</th><th>Лицензия</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Wine</th>
+          <td>исполнение Windows-программ; сборка проекта на основе исходных текстов CrossOver</td>
+          <td>LGPL 2.1 или новее</td>
+        </tr>
+        <tr>
+          <th scope="row">DXMT</th>
+          <td>перевод DirectX 11 в Metal</td>
+          <td>MIT</td>
+        </tr>
+        <tr>
+          <th scope="row">DXVK</th>
+          <td>запасной путь: DirectX 11 через Vulkan</td>
+          <td>zlib</td>
+        </tr>
+        <tr>
+          <th scope="row">MoltenVK</th>
+          <td>Vulkan поверх Metal</td>
+          <td>Apache 2.0</td>
+        </tr>
+        <tr>
+          <th scope="row">FreeType</th>
+          <td>отрисовка шрифтов</td>
+          <td>FTL или GPL 2</td>
+        </tr>
+        <tr>
+          <th scope="row">GnuTLS</th>
+          <td>защищённые соединения внутри окружения</td>
+          <td>LGPL 2.1 или новее</td>
+        </tr>
+        <tr>
+          <th scope="row">SDL2</th>
+          <td>поддержка геймпадов</td>
+          <td>zlib</td>
+        </tr>
+        <tr>
+          <th scope="row">winetricks</th>
+          <td>установка библиотек Windows в окружение</td>
+          <td>LGPL 2.1</td>
+        </tr>
+        <tr>
+          <th scope="row">cabextract</th>
+          <td>распаковка установочных пакетов Microsoft</td>
+          <td>GPL 2</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="muted">
+    Файлы игр, «Леста Игры» и рантайм Microsoft WebView2 в сборку не входят и не
+    распространяются: приложение скачивает их с официальных серверов
+    правообладателей во время установки.
+  </p>
+</section>
+
+<section class="section">
+  <h2>Исходные тексты</h2>
+  <p class="section-lede">
+    Wine, GnuTLS и winetricks распространяются под LGPL, cabextract — под GPL.
+    Раздавая собранные двоичные файлы, мы обязаны предоставить и их исходные
+    тексты вместе с нашими изменениями.
+  </p>
+
+  <div class="cards">
+    <article class="card">
+      <h3>Наш Wine</h3>
+      <p>
+        Собран из исходных текстов CrossOver. Полный рецепт сборки, все патчи и
+        параметры конфигурации публикуются в репозитории проекта. Если нужного
+        не нашли — напишите, вышлем.
+      </p>
+    </article>
+    <article class="card">
+      <h3>Остальные компоненты</h3>
+      <p>
+        Берутся из официальных выпусков без изменений. Точные версии перечислены
+        в манифесте проекта; ссылки на первоисточники — ниже.
+      </p>
+    </article>
+    <article class="card">
+      <h3>Запрос по почте</h3>
+      <p>
+        Напишите на
+        <a href="mailto:gametriathlon@yandex.com">gametriathlon@yandex.com</a>,
+        указав версию сборки, и мы вышлем исходные тексты любого из перечисленных
+        компонентов вместе с изменениями.
+      </p>
+    </article>
+  </div>
+
+  <h3 style="margin-top:2rem">Первоисточники</h3>
+  <ul class="support-list" style="margin-bottom:0">
+    <li><a href="https://gitlab.winehq.org/wine/wine" rel="noopener">Wine</a> · <a href="https://www.codeweavers.com/crossover/source" rel="noopener">исходные тексты CrossOver</a></li>
+    <li><a href="https://github.com/3Shain/dxmt" rel="noopener">DXMT</a></li>
+    <li><a href="https://github.com/Gcenx/DXVK-macOS" rel="noopener">DXVK для macOS</a></li>
+    <li><a href="https://github.com/KhronosGroup/MoltenVK" rel="noopener">MoltenVK</a></li>
+    <li><a href="https://freetype.org" rel="noopener">FreeType</a></li>
+    <li><a href="https://www.gnutls.org" rel="noopener">GnuTLS</a></li>
+    <li><a href="https://www.libsdl.org" rel="noopener">SDL2</a></li>
+    <li><a href="https://github.com/Winetricks/winetricks" rel="noopener">winetricks</a></li>
+    <li><a href="https://www.cabextract.org.uk" rel="noopener">cabextract</a></li>
+  </ul>
+</section>
+
+<section class="section">
+  <h2>Товарные знаки</h2>
+  <p class="section-lede" style="margin-bottom:0">
+    Game Triathlon — независимый проект. Он не связан с Lesta Games, не одобрен
+    и не поддерживается ею. «Мир танков», «Мир кораблей», Tanks Blitz и связанные
+    с ними знаки принадлежат их правообладателям и упоминаются здесь только для
+    того, чтобы объяснить назначение программы. Apple, macOS и Metal — товарные
+    знаки Apple Inc. Windows и DirectX — товарные знаки Microsoft Corporation.
+  </p>
+</section>
+
+</main>
+
+<footer class="foot">
+  <p class="disclaimer" style="border:0;padding-top:0">
+    © Game Triathlon. Код проекта — под лицензией MIT.
+    <a href="index.html">На главную</a>
+  </p>
+</footer>
+
+</body>
+</html>
