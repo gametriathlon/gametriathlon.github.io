@@ -1,334 +1,230 @@
 <!doctype html>
 <html lang="ru">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Game Triathlon — игры Lesta на Apple Silicon</title>
-<meta name="description" content="Открытая обёртка для запуска Lesta Game Center и его игр на Mac с Apple Silicon. Wine + DXMT, DirectX 11 через Metal. Без Boot Camp и виртуальных машин.">
-<link rel="icon" href="assets/icon.png">
-<link rel="stylesheet" href="styles.css">
-<meta property="og:title" content="Game Triathlon">
-<meta property="og:description" content="Игры Lesta на Apple Silicon — без Boot Camp и виртуальных машин.">
-<meta property="og:image" content="assets/icon.png">
-<meta property="og:type" content="website">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Game Triathlon — игры Lesta на Mac</title>
+  <meta name="description" content="Запускайте «Мир танков», «Мир кораблей» и Tanks Blitz на Mac с Apple Silicon — без Boot Camp и виртуальной машины.">
+  <meta name="theme-color" content="#07131f">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:title" content="Game Triathlon — большие игры прямо на Mac">
+  <meta property="og:description" content="Готовая среда для запуска игр Lesta на компьютерах Mac с Apple Silicon.">
+  <meta property="og:url" content="https://gametriathlon.github.io/">
+  <meta property="og:image" content="https://gametriathlon.github.io/assets/images/app-icon.png">
+  <meta name="twitter:card" content="summary">
+  <link rel="canonical" href="https://gametriathlon.github.io/">
+  <link rel="icon" href="assets/images/app-icon.png" type="image/png">
+  <link rel="stylesheet" href="assets/styles.css">
+  <script src="assets/site.js" defer></script>
 </head>
 <body>
+  <a class="skip-link" href="#main">Перейти к содержимому</a>
 
-<header class="top">
-  <a class="brand" href="#">
-    <img src="assets/icon.png" alt="" width="32" height="32">
-    <span>Game Triathlon</span>
-  </a>
-  <nav>
-    <a href="#how">Как это работает</a>
-    <a href="#download">Скачать</a>
-    <a href="#requirements">Требования</a>
-    <a href="#faq">Вопросы</a>
-    <a href="https://github.com/gametriathlon" rel="noopener">GitHub</a>
-  </nav>
-</header>
+  <header class="site-header" data-header>
+    <div class="container nav-shell">
+      <a class="brand" href="#top" aria-label="Game Triathlon — в начало страницы">
+        <img src="assets/images/app-icon.png" width="42" height="42" alt="">
+        <span>Game Triathlon</span>
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-menu-toggle>
+        <span class="sr-only">Открыть меню</span>
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="Основная навигация" data-menu>
+        <a href="#how">Как работает</a>
+        <a href="#games">Игры</a>
+        <a href="#requirements">Требования</a>
+        <a href="#faq">FAQ</a>
+        <a class="nav-support" href="#support">Поддержать</a>
+      </nav>
+    </div>
+  </header>
 
-<main>
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="hero-light hero-light-one" aria-hidden="true"></div>
+      <div class="hero-light hero-light-two" aria-hidden="true"></div>
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow"><span></span> Игры Lesta на Apple Silicon</p>
+          <h1>Большие игры.<br><em>Прямо на Mac.</em></h1>
+          <p class="hero-lead">«Мир танков», «Мир кораблей» и Tanks Blitz — без Boot Camp и виртуальной машины.</p>
+          <div class="hero-actions">
+            <a class="button button-primary is-disabled" data-download aria-disabled="true">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 5-5m-5 5-5-5M5 20h14"/></svg>
+              <span data-download-label>Скоро</span>
+            </a>
+            <a class="button button-quiet" href="https://github.com/gametriathlon/gametriathlon.github.io/releases">Все версии</a>
+          </div>
+          <p class="release-note" data-hero-release>Первый публичный релиз готовится</p>
+        </div>
 
-<section class="hero">
-  <p class="badge">pre-alpha · открытый исходный код</p>
-  <h1>Игры Lesta на Apple&nbsp;Silicon — без Boot&nbsp;Camp и виртуальных машин.</h1>
-  <p class="lede">
-    Game Triathlon поднимает «Леста Игры» прямо на macOS, а лаунчер уже сам ставит
-    и обновляет игры: «Мир танков», «Мир кораблей», Tanks&nbsp;Blitz.
-  </p>
-  <div class="cta">
-    <a class="btn btn-primary" href="#download">Скачать</a>
-    <a class="btn btn-ghost" href="#how">Как это работает</a>
-  </div>
-  <p class="cta-note">
-    Бесплатно, MIT. Без рекламы и телеметрии. Файлы игры и лаунчера никуда не передаются.
-  </p>
-</section>
-
-<section class="notice" role="note">
-  <strong>Честно о стадии.</strong> Это pre-alpha. «Мир танков» проверен целиком — установка,
-  вход, бой. «Мир кораблей» и Tanks&nbsp;Blitz должны работать тем же путём, но вживую ещё не
-  запускались. Если попробуете — <a href="https://github.com/gametriathlon" rel="noopener">расскажите</a>.
-</section>
-
-<section id="how" class="section">
-  <h2>Как это работает</h2>
-  <p class="section-lede">
-    Никакой виртуальной машины и второй операционной системы. Windows-программа
-    запускается прямо на macOS, а обращения к видеокарте переводятся в Metal.
-  </p>
-
-  <div class="cards">
-    <article class="card">
-      <div class="card-num">1</div>
-      <h3>Лаунчер запускается как есть</h3>
-      <p>
-        Мы не подменяем «Леста Игры» и не качаем игры сами. Приложение поднимает
-        настоящий лаунчер, а он штатно ставит и обновляет клиент. Поэтому доступен
-        весь его каталог, а не отдельная игра.
-      </p>
-    </article>
-    <article class="card">
-      <div class="card-num">2</div>
-      <h3>DirectX 11 переводится в Metal</h3>
-      <p>
-        Графика идёт через DXMT — прямую трансляцию DirectX&nbsp;11 в Metal, родной
-        графический интерфейс macOS. Без медленного обходного пути через OpenGL.
-        На аварийный случай рядом лежит DXVK и переключается одной настройкой.
-      </p>
-    </article>
-    <article class="card">
-      <div class="card-num">3</div>
-      <h3>Всё уже внутри</h3>
-      <p>
-        Wine, его библиотеки и графический слой входят в приложение. Homebrew,
-        Xcode и ручная возня не нужны: единственное системное требование —
-        Rosetta&nbsp;2, и если её нет, приложение предложит штатную установку.
-      </p>
-    </article>
-  </div>
-
-  <details class="deep">
-    <summary>Подробнее, для тех кому интересно</summary>
-    <p>
-      Wine — не эмулятор: он не изображает целый компьютер, а переводит обращения
-      Windows-программы к системе в понятные macOS. Поэтому нет накладных расходов
-      виртуальной машины, и игра работает с процессором напрямую.
-    </p>
-    <p>
-      В поставке — Wine 11.0, собранный проектом из исходных текстов CrossOver.
-      Апстримный Wine той же версии установку лаунчера не проходит: дело в патчах
-      CodeWeavers, а не в номере версии. Это единственный движок, на котором
-      создаются бутылки.
-    </p>
-    <p>
-      Код процессора x86-64 исполняет Rosetta&nbsp;2 — штатный механизм Apple.
-      Он полностью работает по macOS&nbsp;27 включительно; в macOS&nbsp;28 Apple его
-      убирает, и к этому моменту проект должен переехать на другой путь.
-    </p>
-  </details>
-</section>
-
-<section id="screenshots" class="section">
-  <h2>Как это выглядит</h2>
-  <p class="section-lede">Скриншоты и запись игры появятся здесь после первой публичной сборки.</p>
-  <div class="shots">
-    <figure class="shot">
-      <div class="shot-ph" aria-hidden="true"><span>Окно приложения</span></div>
-      <figcaption>Главный экран: одна кнопка от пустой машины до лаунчера</figcaption>
-    </figure>
-    <figure class="shot">
-      <div class="shot-ph" aria-hidden="true"><span>«Леста Игры»</span></div>
-      <figcaption>Лаунчер работает как на Windows</figcaption>
-    </figure>
-    <figure class="shot">
-      <div class="shot-ph" aria-hidden="true"><span>Игра</span></div>
-      <figcaption>Бой в «Мире танков»</figcaption>
-    </figure>
-  </div>
-</section>
-
-<section id="download" class="section">
-  <h2>Скачать</h2>
-
-  <div class="dl">
-    <div class="dl-main">
-      <p class="dl-state">Публичных сборок пока нет.</p>
-      <p>
-        Первая сборка появится на странице релизов — там же будут все следующие версии
-        и список изменений. Пока проект можно собрать самому из исходных текстов.
-      </p>
-      <div class="cta">
-        <a class="btn btn-primary" href="https://github.com/gametriathlon/gametriathlon.github.io/releases" rel="noopener">Страница релизов</a>
+        <div class="hero-visual" aria-label="Game Triathlon соединяет Lesta Game Center, DirectX 11 и Metal">
+          <div class="orbit orbit-one" aria-hidden="true"></div>
+          <div class="orbit orbit-two" aria-hidden="true"></div>
+          <div class="app-icon-wrap">
+            <div class="icon-glow" aria-hidden="true"></div>
+            <img src="assets/images/app-icon.png" width="286" height="286" alt="Значок Game Triathlon">
+          </div>
+          <div class="tech-chip chip-one"><span class="chip-dot blue"></span>Lesta Game Center</div>
+          <div class="tech-chip chip-two"><span class="chip-dot cyan"></span>DirectX 11 → Metal</div>
+          <div class="tech-chip chip-three"><span class="chip-dot green"></span>Apple Silicon</div>
+        </div>
       </div>
-    </div>
-
-    <aside class="dl-side">
-      <h3>Первый запуск</h3>
-      <p>
-        Сборка не подписана сертификатом Apple, поэтому macOS откажется её открыть
-        со словами о повреждённом файле. Это не повреждение — так система относится
-        к любой программе без платной подписи разработчика. Снять карантин:
-      </p>
-      <pre><code>xattr -cr "/Applications/Game Triathlon.app"</code></pre>
-      <p class="muted">
-        Подпись — одна из целей сбора средств: она стоит 99&nbsp;$ в год.
-      </p>
-    </aside>
-  </div>
-
-  <h3 class="changelog-title">Что нового</h3>
-  <ol class="changelog">
-    <li>
-      <div class="ver">не выпущено</div>
-      <div>
-        <p><strong>Готовится к первому релизу.</strong></p>
-        <ul>
-          <li>свой движок Wine 11.0, собранный из исходных текстов CrossOver;</li>
-          <li>графика через DXMT, DXVK — как запасной вариант;</li>
-          <li>установка «Леста Игры» и МОСТ из приложения;</li>
-          <li>игровой режим macOS и отладочный оверлей с частотой кадров.</li>
-        </ul>
+      <div class="container proof-row" aria-label="Ключевые преимущества">
+        <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>Три проверенные игры</span>
+        <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>Автоматическая настройка</span>
+        <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>Бесплатно</span>
       </div>
-    </li>
-  </ol>
-</section>
+    </section>
 
-<section id="requirements" class="section">
-  <h2>Системные требования</h2>
-  <div class="table-wrap">
-    <table>
-      <thead>
-        <tr><th></th><th>Минимум</th><th>Комфортно</th></tr>
-      </thead>
-      <tbody>
-        <tr><th scope="row">Чип</th><td>Apple M1, 8 ГБ памяти</td><td>M-Pro / Max / Ultra, 16 ГБ и больше</td></tr>
-        <tr><th scope="row">macOS</th><td>26</td><td>26 и новее</td></tr>
-        <tr><th scope="row">Диск</th><td>70 ГБ свободно</td><td>100 ГБ</td></tr>
-        <tr><th scope="row">Прочее</th><td colspan="2">Rosetta 2 — приложение предложит установить, если её нет</td></tr>
-      </tbody>
-    </table>
-  </div>
-  <p class="muted">
-    Mac на процессорах Intel не поддерживаются и в ближайших планах не значатся.
-  </p>
-</section>
+    <section class="section section-soft" id="games">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow"><span></span> Проверено в игре</p>
+          <h2>Один Mac. Три мира.</h2>
+          <p>Игры устанавливаются и обновляются через официальный Lesta Game Center.</p>
+        </div>
+        <div class="games-grid">
+          <article class="game-card game-card-tanks">
+            <div class="game-symbol" aria-hidden="true">
+              <svg viewBox="0 0 48 48"><path d="M8 29h32v9H8zM13 22h22l5 7H8zM20 13h12v9H20zM32 16h8"/></svg>
+            </div>
+            <div><p class="status"><i></i>Проверено</p><h3>Мир танков</h3><p>Установка, обновление и запуск игры.</p></div>
+          </article>
+          <article class="game-card game-card-ships">
+            <div class="game-symbol" aria-hidden="true">
+              <svg viewBox="0 0 48 48"><path d="M24 7v26M16 15h16M18 33l-7-9h26l-7 9M8 38c4 0 4 3 8 3s4-3 8-3 4 3 8 3 4-3 8-3"/></svg>
+            </div>
+            <div><p class="status"><i></i>Проверено</p><h3>Мир кораблей</h3><p>Автоматическое исправление совместимости после обновлений.</p></div>
+          </article>
+          <article class="game-card game-card-blitz">
+            <div class="game-symbol" aria-hidden="true">
+              <svg viewBox="0 0 48 48"><path d="m27 5-14 23h10l-3 15 15-24H25z"/></svg>
+            </div>
+            <div><p class="status"><i></i>Проверено</p><h3>Tanks Blitz</h3><p>Запуск через ту же готовую игровую среду.</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
 
-<section id="faq" class="section">
-  <h2>Частые вопросы</h2>
+    <section class="section" id="how">
+      <div class="container">
+        <div class="section-heading centered">
+          <p class="eyebrow"><span></span> Без ручной настройки</p>
+          <h2>Установили — и можно играть</h2>
+          <p>Техническую часть Game Triathlon берёт на себя.</p>
+        </div>
+        <ol class="steps">
+          <li><span class="step-number">01</span><div class="step-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 5-5m-5 5-5-5M5 20h14"/></svg></div><h3>Скачайте приложение</h3><p>Перенесите Game Triathlon в папку «Программы».</p></li>
+          <li><span class="step-number">02</span><div class="step-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 17 10 7l4 7 2-3 4 6zM4 20h16"/></svg></div><h3>Выберите игру</h3><p>Lesta Game Center установит её обычным способом.</p></li>
+          <li><span class="step-number">03</span><div class="step-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 7 8 5-8 5z"/></svg></div><h3>Нажмите «Играть»</h3><p>DXMT переведёт графику DirectX 11 в Metal.</p></li>
+        </ol>
+        <div class="explain-card">
+          <div><p class="eyebrow"><span></span> Что внутри</p><h3>Wine запускает Windows-приложения.<br>DXMT рисует игру через Metal.</h3></div>
+          <p>Всё необходимое уже находится внутри Game Triathlon. Не нужно отдельно устанавливать CrossOver, Homebrew или графические библиотеки.</p>
+        </div>
+      </div>
+    </section>
 
-  <details>
-    <summary>Меня не забанят за это?</summary>
-    <p>
-      Проект ничего не меняет в игре и не вмешивается в её работу: он лишь создаёт
-      окружение, в котором запускается обычный, ничем не тронутый клиент. Тем не менее
-      официальной поддержки macOS у Lesta нет, и никаких гарантий на этот счёт мы дать
-      не можем — как и любой сторонний проект. Решение за вами.
-    </p>
-  </details>
+    <section class="section section-media" id="media">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow"><span></span> В движении</p>
+          <h2>Геймплей на Apple Silicon</h2>
+          <p>Здесь скоро появятся записи игрового процесса и скриншоты.</p>
+        </div>
+        <div class="media-grid">
+          <div class="media-main media-placeholder">
+            <span class="play-mark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 7 8 5-8 5z"/></svg></span>
+            <div><strong>Видео геймплея</strong><small>Скоро</small></div>
+          </div>
+          <div class="media-side">
+            <div class="media-placeholder"><span class="scan-lines"></span><div><strong>Ангар</strong><small>Скриншот скоро</small></div></div>
+            <div class="media-placeholder"><span class="scan-lines"></span><div><strong>В бою</strong><small>Скриншот скоро</small></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <details>
-    <summary>Какие игры работают?</summary>
-    <p>
-      Целиком проверен «Мир танков»: установка, вход в аккаунт, бой. «Мир кораблей»
-      и Tanks Blitz ставятся тем же лаунчером и по идее должны работать так же,
-      но вживую их ещё не запускали — обещать не будем.
-    </p>
-  </details>
+    <section class="section" id="requirements">
+      <div class="container requirements-grid">
+        <div class="section-heading">
+          <p class="eyebrow"><span></span> Системные требования</p>
+          <h2>Что понадобится</h2>
+          <p>Game Triathlon создан для современных компьютеров Mac с процессорами Apple.</p>
+        </div>
+        <dl class="requirements-card">
+          <div><dt>Процессор</dt><dd>Apple M1 или новее</dd></div>
+          <div><dt>Система</dt><dd>macOS 26+</dd></div>
+          <div><dt>Память</dt><dd>8 ГБ минимум, 16 ГБ комфортно</dd></div>
+          <div><dt>Свободное место</dt><dd>От 70 ГБ</dd></div>
+          <div><dt>Дополнительно</dt><dd>Rosetta 2 и интернет</dd></div>
+        </dl>
+      </div>
+    </section>
 
-  <details>
-    <summary>Нужно ли что-то устанавливать заранее?</summary>
-    <p>
-      Нет. Wine, его библиотеки, графический слой и служебные утилиты входят в
-      приложение — докачивать при первом запуске нечего. Единственное требование
-      системы — Rosetta 2; если её нет, приложение предложит штатную установку macOS.
-    </p>
-  </details>
+    <section class="section section-soft" id="release">
+      <div class="container release-card">
+        <div>
+          <p class="eyebrow"><span></span> Последняя версия</p>
+          <h2 data-release-title>Первый релиз готовится</h2>
+          <p class="release-meta" data-release-meta>Следите за обновлениями на GitHub Releases.</p>
+          <ul class="change-list" data-changes>
+            <li>Один установочный DMG со всем необходимым</li>
+            <li>Поддержка трёх игр Lesta</li>
+            <li>Графика DirectX 11 через Metal</li>
+          </ul>
+        </div>
+        <div class="release-actions">
+          <a class="button button-primary is-disabled" data-download aria-disabled="true"><span data-download-label>Скоро</span></a>
+          <a class="text-link" href="https://github.com/gametriathlon/gametriathlon.github.io/releases">Все версии и изменения <span>→</span></a>
+        </div>
+      </div>
+    </section>
 
-  <details>
-    <summary>macOS пишет, что приложение повреждено</summary>
-    <p>
-      Оно не повреждено. Так macOS реагирует на любую программу без подписи Apple.
-      Снимите карантин командой <code>xattr -cr "/Applications/Game Triathlon.app"</code>
-      и откройте снова.
-    </p>
-  </details>
+    <section class="section" id="faq">
+      <div class="container faq-grid">
+        <div class="section-heading">
+          <p class="eyebrow"><span></span> Частые вопросы</p>
+          <h2>Перед началом игры</h2>
+          <p>Если ответа здесь нет, напишите нам — дополним этот раздел.</p>
+          <a class="text-link" href="mailto:gametriathlon@yandex.com">gametriathlon@yandex.com <span>↗</span></a>
+        </div>
+        <div class="faq-list">
+          <details><summary>Какие компьютеры Mac поддерживаются?<span></span></summary><p>Mac с процессором Apple M1 или новее и macOS 26+. Intel Mac не поддерживается.</p></details>
+          <details><summary>Нужно ли покупать CrossOver или устанавливать Wine?<span></span></summary><p>Нет. Совместимая версия Wine, DXMT и необходимые библиотеки уже включены в Game Triathlon.</p></details>
+          <details><summary>Как устанавливаются и обновляются игры?<span></span></summary><p>Через официальный Lesta Game Center внутри подготовленной среды. Файлы игр сайт и Game Triathlon не распространяют.</p></details>
+          <details><summary>Работает ли менеджер модов МОСТ?<span></span></summary><p>МОСТ устанавливается из Game Triathlon и работает в той же игровой бутылке. Для установки требуется интернет.</p></details>
+          <details><summary>Зачем нужна Rosetta 2?<span></span></summary><p>Она выполняет часть компонентов совместимости. Если Rosetta 2 отсутствует, macOS предложит установить её штатным способом.</p></details>
+          <details><summary>macOS не разрешает открыть приложение. Что делать?<span></span></summary><p>Первые сборки могут быть без нотариального заверения Apple. Откройте приложение правой кнопкой мыши и выберите «Открыть». Подписанные релизы появятся после подключения Apple Developer Program.</p></details>
+          <details><summary>Где находятся игры и как освободить место?<span></span></summary><p>Игры находятся внутри управляемой бутылки в Application Support. Удалить всю бутылку вместе с играми можно на экране «Бутылки».</p></details>
+          <details><summary>Как сообщить о проблеме?<span></span></summary><p>Откройте раздел «Логи» в Game Triathlon, сохраните диагностику и отправьте её на gametriathlon@yandex.com вместе с моделью Mac и описанием ошибки.</p></details>
+        </div>
+      </div>
+    </section>
 
-  <details>
-    <summary>Сколько это занимает места?</summary>
-    <p>
-      Само приложение — больше гигабайта, потому что несёт движок целиком. Основное
-      место уходит на игру: рассчитывайте на 70 ГБ свободных, комфортно — 100.
-    </p>
-  </details>
+    <section class="section support-section" id="support">
+      <div class="support-glow" aria-hidden="true"></div>
+      <div class="container support-card">
+        <div class="support-heart" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21l7.8-7.5 1.1-1.1a5.5 5.5 0 0 0-.1-7.8z"/></svg>
+        </div>
+        <div><p class="eyebrow coral"><span></span> Поддержать разработку</p><h2>Помогите проекту двигаться дальше</h2><p>Поддержка помогает оплачивать Apple Developer Program, инфраструктуру и подготовку новых совместимых сборок.</p></div>
+        <a class="button button-support" href="https://pay.cloudtips.ru/p/ef916df9" target="_blank" rel="noopener noreferrer">Поддержать проект <span>↗</span></a>
+      </div>
+      <p class="payment-note">Платёж проходит на стороне CloudTips. Game Triathlon не получает данные вашей карты.</p>
+    </section>
+  </main>
 
-  <details>
-    <summary>Это виртуальная машина? Будет медленно?</summary>
-    <p>
-      Нет, виртуальной машины здесь нет, и вторая операционная система не нужна.
-      Windows-программа работает поверх macOS напрямую, а графика переводится в Metal.
-      Накладные расходы есть, но это не эмуляция целого компьютера.
-    </p>
-  </details>
-
-  <details>
-    <summary>Что будет, когда Apple уберёт Rosetta 2?</summary>
-    <p>
-      Rosetta 2 полностью работает по macOS 27 включительно, а в macOS 28 Apple её
-      убирает. Проект знает об этом сроке, и переход на другой способ исполнения
-      x86-кода — отдельная задача в плане развития.
-    </p>
-  </details>
-
-  <details>
-    <summary>Куда уходят мои данные?</summary>
-    <p>
-      Никуда. В приложении нет ни рекламы, ни телеметрии, ни сбора статистики.
-      Файлы игры и лаунчера остаются на вашем компьютере. Логин и пароль вы вводите
-      в самом лаунчере Lesta, приложение их не видит и не хранит.
-    </p>
-  </details>
-
-  <details>
-    <summary>Что делать, если не работает?</summary>
-    <p>
-      Заведите обсуждение на GitHub и приложите логи — приложение складывает их в
-      <code>~/Library/Logs/GameTriathlon</code>. Большинство известных неполадок уже
-      разобрано в документации проекта с готовыми решениями.
-    </p>
-  </details>
-</section>
-
-<section id="support" class="section support">
-  <div class="support-inner">
-    <h2>Поддержать проект</h2>
-    <p>
-      Game Triathlon делается в свободное время и остаётся бесплатным. Если он вам
-      пригодился — можно поддержать разработку. На что идут средства:
-    </p>
-    <ul class="support-list">
-      <li><strong>Подпись приложения</strong> — Apple Developer Program, 99&nbsp;$ в год. Без неё macOS ругается на каждую сборку.</li>
-      <li><strong>Домен и раздача сборок</strong> — чтобы ссылка не переезжала.</li>
-      <li><strong>Железо для проверки</strong> — разные чипы ведут себя по-разному, а проверять пока не на чем.</li>
-    </ul>
-    <div class="cta">
-      <a class="btn btn-primary" href="https://pay.cloudtips.ru/p/ef916df9" rel="noopener">Поддержать</a>
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand"><img src="assets/images/app-icon.png" width="48" height="48" alt=""><div><strong>Game Triathlon</strong><span>Игры Lesta на Mac</span></div></div>
+      <div class="footer-links"><a href="#how">Как работает</a><a href="#requirements">Требования</a><a href="#faq">FAQ</a><a href="licenses.html">Лицензии</a><a href="https://github.com/gametriathlon/gametriathlon.github.io/releases">Releases</a></div>
+      <a class="footer-mail" href="mailto:gametriathlon@yandex.com">gametriathlon@yandex.com</a>
     </div>
-    <p class="muted">
-      Платёж проходит на стороне CloudTips. Ни сайт, ни приложение не получают
-      и не обрабатывают платёжные данные.
-    </p>
-  </div>
-</section>
-
-</main>
-
-<footer class="foot">
-  <div class="foot-cols">
-    <div>
-      <h4>Проект</h4>
-      <a href="https://github.com/gametriathlon" rel="noopener">GitHub</a>
-      <a href="https://github.com/gametriathlon/gametriathlon.github.io/releases" rel="noopener">Релизы</a>
-      <a href="licenses.html">Лицензии и исходные тексты</a>
-    </div>
-    <div>
-      <h4>Связь</h4>
-      <a href="mailto:gametriathlon@yandex.com">gametriathlon@yandex.com</a>
-    </div>
-    <div>
-      <h4>Игры</h4>
-      <a href="https://tanki.su" rel="noopener">tanki.su</a>
-      <a href="https://korabli.su" rel="noopener">korabli.su</a>
-    </div>
-  </div>
-  <p class="disclaimer">
-    Game Triathlon — независимый проект с открытым исходным кодом под лицензией MIT.
-    Он не связан с Lesta&nbsp;Games и не одобрен ею, не распространяет файлы игр
-    и не изменяет игровой клиент. Названия игр и товарные знаки принадлежат их
-    правообладателям.
-  </p>
-</footer>
-
+    <div class="container legal"><p>Game Triathlon не связан с Lesta Games или Apple. Названия игр и компаний принадлежат их владельцам.</p><p>© <span data-year>2026</span> Game Triathlon</p></div>
+  </footer>
 </body>
 </html>
