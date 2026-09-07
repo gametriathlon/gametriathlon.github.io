@@ -51,6 +51,7 @@ for forbidden in ("игры Lesta на Mac", "Genshin"):
         fail(f"в index.html осталось неподтверждённое или старое позиционирование: {forbidden}")
 
 site_js = (ROOT / "assets/site.js").read_text(encoding="utf-8")
+site_css = (ROOT / "assets/styles.css").read_text(encoding="utf-8")
 if "releases/latest/download/GameTriathlon.dmg" not in site_js:
     fail("в site.js отсутствует постоянная ссылка на последний DMG")
 
@@ -65,6 +66,10 @@ gameplay_markers = (
     'src="assets/media/gameplay.mp4" type="video/mp4"',
     'src="assets/media/hangar.webp"',
     'alt="Ангар «Мира танков» на Mac"',
+    'data-lightbox-src="assets/media/hangar.webp"',
+    'data-lightbox-src="assets/media/gameplay-poster.webp"',
+    '<dialog class="media-lightbox"',
+    'data-lightbox-image',
 )
 for marker in gameplay_markers:
     if marker not in html:
@@ -74,6 +79,11 @@ if "data-gameplay-video" not in html or "IntersectionObserver" not in site_js:
     fail("видео геймплея не управляется с учётом видимости секции")
 if "prefers-reduced-motion: reduce" not in site_js:
     fail("видео геймплея не учитывает настройку уменьшения движения")
+for marker in ("showModal", "data-lightbox-trigger", "data-lightbox-close"):
+    if marker not in site_js and marker not in html:
+        fail(f"в увеличении изображений отсутствует маркер: {marker}")
+if not re.search(r"\.gameplay-video\s*\{[^}]*object-fit:\s*contain", site_css):
+    fail("видео геймплея должно показывать полный кадр без обрезки FPS")
 if any((ROOT / "assets").rglob("*.mtreplay")):
     fail("исходный реплей не должен публиковаться в assets")
 

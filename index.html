@@ -15,8 +15,8 @@
   <meta name="twitter:card" content="summary">
   <link rel="canonical" href="https://gametriathlon.github.io/">
   <link rel="icon" href="assets/images/app-icon.png" type="image/png">
-  <link rel="stylesheet" href="assets/styles.css?v=20260907-3">
-  <script src="assets/site.js?v=20260907-3" defer></script>
+  <link rel="stylesheet" href="assets/styles.css?v=20260907-4">
+  <script src="assets/site.js?v=20260907-4" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Перейти к содержимому</a>
@@ -180,10 +180,17 @@
             <figcaption><strong>«Мир танков» в бою</strong><small>Записано на Apple Silicon</small></figcaption>
           </figure>
           <div class="media-side">
-            <figure class="media-card"><img src="assets/media/hangar.webp" alt="Ангар «Мира танков» на Mac" loading="lazy" width="1600" height="1041"><figcaption><strong>Ангар</strong><small>«Мир танков»</small></figcaption></figure>
-            <figure class="media-card"><img src="assets/media/gameplay-poster.webp" alt="Танк Type 58 в бою на карте Химмельсдорф" loading="lazy" width="1280" height="832"><figcaption><strong>В бою</strong><small>DXMT · Metal</small></figcaption></figure>
+            <button class="media-card media-zoom" type="button" data-lightbox-trigger data-lightbox-src="assets/media/hangar.webp" data-lightbox-alt="Ангар «Мира танков» на Mac" data-lightbox-caption="Ангар · «Мир танков»" aria-label="Увеличить скриншот ангара"><img src="assets/media/hangar.webp" alt="Ангар «Мира танков» на Mac" loading="lazy" width="1600" height="1041"><span class="media-caption"><strong>Ангар</strong><small>«Мир танков» · Увеличить</small></span></button>
+            <button class="media-card media-zoom" type="button" data-lightbox-trigger data-lightbox-src="assets/media/gameplay-poster.webp" data-lightbox-alt="Танк Type 58 в бою на карте Химмельсдорф" data-lightbox-caption="В бою · DXMT · Metal" aria-label="Увеличить скриншот боя"><img src="assets/media/gameplay-poster.webp" alt="Танк Type 58 в бою на карте Химмельсдорф" loading="lazy" width="1280" height="832"><span class="media-caption"><strong>В бою</strong><small>DXMT · Metal · Увеличить</small></span></button>
           </div>
         </div>
+        <dialog class="media-lightbox" data-lightbox aria-label="Просмотр скриншота">
+          <div class="media-lightbox-content">
+            <button class="media-lightbox-close" type="button" data-lightbox-close aria-label="Закрыть увеличенное изображение">×</button>
+            <img data-lightbox-image src="assets/media/gameplay-poster.webp" alt="">
+            <p data-lightbox-caption></p>
+          </div>
+        </dialog>
       </div>
     </section>
 

@@ -107,6 +107,32 @@ if (gameplayVideo && "IntersectionObserver" in window) {
   });
 }
 
+const lightbox = document.querySelector("[data-lightbox]");
+const lightboxImage = lightbox?.querySelector("[data-lightbox-image]");
+const lightboxCaption = lightbox?.querySelector("[data-lightbox-caption]");
+let lightboxTrigger = null;
+
+document.querySelectorAll("[data-lightbox-trigger]").forEach((trigger) => {
+  trigger.addEventListener("click", () => {
+    if (!lightbox || !lightboxImage) return;
+    lightboxTrigger = trigger;
+    lightboxImage.src = trigger.dataset.lightboxSrc;
+    lightboxImage.alt = trigger.dataset.lightboxAlt || "";
+    if (lightboxCaption) lightboxCaption.textContent = trigger.dataset.lightboxCaption || "";
+    lightbox.showModal();
+  });
+});
+
+const closeLightbox = () => {
+  lightbox?.close();
+  lightboxTrigger?.focus();
+};
+
+lightbox?.querySelector("[data-lightbox-close]")?.addEventListener("click", closeLightbox);
+lightbox?.addEventListener("click", (event) => {
+  if (event.target === lightbox) closeLightbox();
+});
+
 function validRelease(value) {
   return value && value.available === true
     && typeof value.version === "string" && value.version.length > 0
