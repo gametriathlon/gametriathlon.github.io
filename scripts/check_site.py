@@ -42,6 +42,10 @@ for marker in ('role="tablist"', 'role="tab"', "data-support-panel", "data-copy"
     if marker not in html:
         fail(f"в блоке поддержки отсутствует доступный элемент: {marker}")
 
+section_positions = [html.find(f'id="{section_id}"') for section_id in ("top", "support", "games")]
+if any(position < 0 for position in section_positions) or section_positions != sorted(section_positions):
+    fail("секции должны идти в порядке: top → support → games")
+
 for forbidden in ("игры Lesta на Mac", "Genshin"):
     if forbidden.casefold() in html.casefold():
         fail(f"в index.html осталось неподтверждённое или старое позиционирование: {forbidden}")
@@ -49,6 +53,10 @@ for forbidden in ("игры Lesta на Mac", "Genshin"):
 site_js = (ROOT / "assets/site.js").read_text(encoding="utf-8")
 if "releases/latest/download/GameTriathlon.dmg" not in site_js:
     fail("в site.js отсутствует постоянная ссылка на последний DMG")
+
+for asset in ("assets/styles.css", "assets/site.js"):
+    if not re.search(rf'(?:href|src)="{re.escape(asset)}\?v=[^"]+"', html):
+        fail(f"ресурс {asset} подключён без версии для сброса кеша")
 
 if "http://" in html:
     fail("в index.html обнаружена небезопасная HTTP-ссылка")

@@ -15,8 +15,8 @@
   <meta name="twitter:card" content="summary">
   <link rel="canonical" href="https://gametriathlon.github.io/">
   <link rel="icon" href="assets/images/app-icon.png" type="image/png">
-  <link rel="stylesheet" href="assets/styles.css">
-  <script src="assets/site.js" defer></script>
+  <link rel="stylesheet" href="assets/styles.css?v=20260907-2">
+  <script src="assets/site.js?v=20260907-2" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Перейти к содержимому</a>
@@ -78,6 +78,40 @@
         <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>Автоматическая настройка</span>
         <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>Бесплатно</span>
       </div>
+    </section>
+
+    <section class="section support-section" id="support">
+      <div class="support-glow" aria-hidden="true"></div>
+      <div class="container support-card">
+        <div class="support-intro">
+          <div class="support-heart" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21l7.8-7.5 1.1-1.1a5.5 5.5 0 0 0-.1-7.8z"/></svg>
+          </div>
+          <div><p class="eyebrow coral"><span></span> Поддержать разработку</p><h2>Помогите проекту двигаться дальше</h2><p>Поддержка помогает оплачивать Apple Developer Program, инфраструктуру и подготовку совместимых сборок.</p></div>
+        </div>
+
+        <div class="support-tabs" role="tablist" aria-label="Способ поддержки">
+          <button class="support-tab is-active" type="button" role="tab" aria-selected="true" aria-controls="support-cloudtips" data-support-tab="cloudtips">CloudTips</button>
+          <button class="support-tab" type="button" role="tab" aria-selected="false" aria-controls="support-crypto" data-support-tab="crypto">Криптовалюта</button>
+          <button class="support-tab" type="button" role="tab" aria-selected="false" aria-controls="support-card" data-support-tab="card">Карта</button>
+        </div>
+
+        <div class="support-panel is-active" id="support-cloudtips" role="tabpanel" data-support-panel="cloudtips">
+          <div><strong>Оплата через CloudTips</strong><p>Откроется защищённая платёжная страница.</p></div>
+          <a class="button button-support" href="https://pay.cloudtips.ru/p/ef916df9" target="_blank" rel="noopener noreferrer">Открыть CloudTips <span>↗</span></a>
+        </div>
+
+        <div class="support-panel" id="support-crypto" role="tabpanel" data-support-panel="crypto" hidden>
+          <div class="support-value"><div><strong>USDT</strong><small>Сеть ERC20</small><code>0x1fb78e0ff7c89656a00cd696e1b5ce9c070e50da</code></div><button type="button" data-copy="0x1fb78e0ff7c89656a00cd696e1b5ce9c070e50da">Копировать</button></div>
+          <div class="support-value"><div><strong>Bitcoin</strong><small>Сеть BTC</small><code>1NEGf85SvXb1PGvRmXdgd9F5bgiXCj26Am</code></div><button type="button" data-copy="1NEGf85SvXb1PGvRmXdgd9F5bgiXCj26Am">Копировать</button></div>
+          <div class="support-value"><div><strong>Ethereum</strong><small>Сеть ERC20</small><code>0x1fb78e0ff7c89656a00cd696e1b5ce9c070e50da</code></div><button type="button" data-copy="0x1fb78e0ff7c89656a00cd696e1b5ce9c070e50da">Копировать</button></div>
+        </div>
+
+        <div class="support-panel" id="support-card" role="tabpanel" data-support-panel="card" hidden>
+        </div>
+        <p class="support-copy-status" data-copy-status aria-live="polite"></p>
+      </div>
+      <p class="payment-note">Game Triathlon не получает и не обрабатывает платёжные данные.</p>
     </section>
 
     <section class="section section-soft" id="games">
@@ -206,39 +240,6 @@
       </div>
     </section>
 
-    <section class="section support-section" id="support">
-      <div class="support-glow" aria-hidden="true"></div>
-      <div class="container support-card">
-        <div class="support-intro">
-          <div class="support-heart" aria-hidden="true">
-            <svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21l7.8-7.5 1.1-1.1a5.5 5.5 0 0 0-.1-7.8z"/></svg>
-          </div>
-          <div><p class="eyebrow coral"><span></span> Поддержать разработку</p><h2>Помогите проекту двигаться дальше</h2><p>Поддержка помогает оплачивать Apple Developer Program, инфраструктуру и подготовку совместимых сборок.</p></div>
-        </div>
-
-        <div class="support-tabs" role="tablist" aria-label="Способ поддержки">
-          <button class="support-tab is-active" type="button" role="tab" aria-selected="true" aria-controls="support-cloudtips" data-support-tab="cloudtips">CloudTips</button>
-          <button class="support-tab" type="button" role="tab" aria-selected="false" aria-controls="support-crypto" data-support-tab="crypto">Криптовалюта</button>
-          <button class="support-tab" type="button" role="tab" aria-selected="false" aria-controls="support-card" data-support-tab="card">Карта</button>
-        </div>
-
-        <div class="support-panel is-active" id="support-cloudtips" role="tabpanel" data-support-panel="cloudtips">
-          <div><strong>Оплата через CloudTips</strong><p>Откроется защищённая платёжная страница.</p></div>
-          <a class="button button-support" href="https://pay.cloudtips.ru/p/ef916df9" target="_blank" rel="noopener noreferrer">Открыть CloudTips <span>↗</span></a>
-        </div>
-
-        <div class="support-panel" id="support-crypto" role="tabpanel" data-support-panel="crypto" hidden>
-          <div class="support-value"><div><strong>USDT</strong><small>Сеть ERC20</small><code>0x1fb78e0ff7c89656a00cd696e1b5ce9c070e50da</code></div><button type="button" data-copy="0x1fb78e0ff7c89656a00cd696e1b5ce9c070e50da">Копировать</button></div>
-          <div class="support-value"><div><strong>Bitcoin</strong><small>Сеть BTC</small><code>1NEGf85SvXb1PGvRmXdgd9F5bgiXCj26Am</code></div><button type="button" data-copy="1NEGf85SvXb1PGvRmXdgd9F5bgiXCj26Am">Копировать</button></div>
-          <div class="support-value"><div><strong>Ethereum</strong><small>Сеть ERC20</small><code>0x1fb78e0ff7c89656a00cd696e1b5ce9c070e50da</code></div><button type="button" data-copy="0x1fb78e0ff7c89656a00cd696e1b5ce9c070e50da">Копировать</button></div>
-        </div>
-
-        <div class="support-panel" id="support-card" role="tabpanel" data-support-panel="card" hidden>
-        </div>
-        <p class="support-copy-status" data-copy-status aria-live="polite"></p>
-      </div>
-      <p class="payment-note">Game Triathlon не получает и не обрабатывает платёжные данные.</p>
-    </section>
   </main>
 
   <footer class="site-footer">
