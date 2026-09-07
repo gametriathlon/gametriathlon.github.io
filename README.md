@@ -1,7 +1,8 @@
 # Game Triathlon — официальный сайт
 
-Публичный лендинг и релизы Game Triathlon: приложения для запуска игр Lesta на
-Mac с Apple Silicon.
+Публичный лендинг и релизы Game Triathlon: приложения для запуска совместимых
+Windows-игр на Mac с Apple Silicon. Сейчас проверены «Мир танков»,
+«Мир кораблей» и Tanks Blitz.
 
 - Сайт: <https://gametriathlon.github.io>
 - Релизы: <https://github.com/gametriathlon/gametriathlon.github.io/releases>

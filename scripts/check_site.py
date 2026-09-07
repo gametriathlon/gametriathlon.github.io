@@ -24,12 +24,15 @@ if not INDEX.is_file():
 html = INDEX.read_text(encoding="utf-8")
 required_text = (
     "Большие игры.",
+    "Windows-игры",
     "Мир танков",
     "Мир кораблей",
     "Tanks Blitz",
     "macOS 26+",
     "gametriathlon@yandex.com",
     "pay.cloudtips.ru/p/ef916df9",
+    "0x1fb78e0ff7c89656a00cd696e1b5ce9c070e50da",
+    "1NEGf85SvXb1PGvRmXdgd9F5bgiXCj26Am",
 )
 for text in required_text:
     if text not in html:

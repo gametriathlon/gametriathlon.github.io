@@ -26,6 +26,55 @@ const updateHeader = () => header?.classList.toggle("scrolled", window.scrollY >
 updateHeader();
 window.addEventListener("scroll", updateHeader, { passive: true });
 
+const supportTabs = document.querySelectorAll("[data-support-tab]");
+const supportPanels = document.querySelectorAll("[data-support-panel]");
+
+supportTabs.forEach((tab) => {
+  tab.addEventListener("click", () => {
+    const selected = tab.dataset.supportTab;
+    supportTabs.forEach((candidate) => {
+      const active = candidate === tab;
+      candidate.classList.toggle("is-active", active);
+      candidate.setAttribute("aria-selected", String(active));
+    });
+    supportPanels.forEach((panel) => {
+      const active = panel.dataset.supportPanel === selected;
+      panel.classList.toggle("is-active", active);
+      panel.hidden = !active;
+    });
+  });
+});
+
+async function copySupportValue(value) {
+  if (navigator.clipboard?.writeText) {
+    await navigator.clipboard.writeText(value);
+    return;
+  }
+  const field = document.createElement("textarea");
+  field.value = value;
+  field.setAttribute("readonly", "");
+  field.style.position = "fixed";
+  field.style.opacity = "0";
+  document.body.appendChild(field);
+  field.select();
+  document.execCommand("copy");
+  field.remove();
+}
+
+document.querySelectorAll("[data-copy]").forEach((button) => {
+  button.addEventListener("click", async () => {
+    const label = button.textContent;
+    try {
+      await copySupportValue(button.dataset.copy);
+      button.textContent = "Скопировано";
+      window.setTimeout(() => { button.textContent = label; }, 1600);
+    } catch {
+      button.textContent = "Выделите адрес";
+      window.setTimeout(() => { button.textContent = label; }, 2200);
+    }
+  });
+});
+
 document.querySelectorAll("[data-year]").forEach((element) => {
   element.textContent = String(new Date().getFullYear());
 });
