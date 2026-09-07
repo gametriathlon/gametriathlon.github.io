@@ -64,12 +64,15 @@ async function copySupportValue(value) {
 document.querySelectorAll("[data-copy]").forEach((button) => {
   button.addEventListener("click", async () => {
     const label = button.textContent;
+    const status = document.querySelector("[data-copy-status]");
     try {
       await copySupportValue(button.dataset.copy);
       button.textContent = "Скопировано";
+      if (status) status.textContent = "Реквизиты скопированы в буфер обмена.";
       window.setTimeout(() => { button.textContent = label; }, 1600);
     } catch {
       button.textContent = "Выделите адрес";
+      if (status) status.textContent = "Не удалось скопировать автоматически. Выделите адрес вручную.";
       window.setTimeout(() => { button.textContent = label; }, 2200);
     }
   });

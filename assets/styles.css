@@ -132,9 +132,10 @@ svg { fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round
 .support-value { padding: 15px 17px; display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 18px; align-items: center; border: 1px solid rgba(255,161,170,.13); border-radius: 15px; background: rgba(255,255,255,.025); }
 .support-value div { min-width: 0; }
 .support-value small { display: block; margin-bottom: 7px; color: #967f87; }
-.support-value code { display: block; overflow: hidden; color: #f3d8dc; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13px; text-overflow: ellipsis; white-space: nowrap; }
+.support-value code { display: block; color: #f3d8dc; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13px; overflow-wrap: anywhere; }
 .support-value button { min-height: 38px; padding: 0 14px; border: 1px solid rgba(255,161,170,.24); border-radius: 10px; color: #ffd5d8; background: rgba(255,143,157,.08); cursor: pointer; font-weight: 700; }
 .support-value button:hover { background: rgba(255,143,157,.15); }
+.support-copy-status { min-height: 18px; margin-top: 12px !important; color: var(--green) !important; font-size: 12px; }
 .button-support { color: #271015; border-color: rgba(255,179,187,.65); background: linear-gradient(135deg,#ffc1c6,#f18998); box-shadow: 0 12px 32px rgba(222,84,108,.2); }
 .button-support:hover { box-shadow: 0 16px 38px rgba(222,84,108,.32); }
 .payment-note { text-align: center; margin: 20px auto 0; color: #706c74; font-size: 12px; }

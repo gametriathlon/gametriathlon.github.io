@@ -38,6 +38,14 @@ for text in required_text:
     if text not in html:
         fail(f"в index.html отсутствует обязательный текст: {text}")
 
+for marker in ('role="tablist"', 'role="tab"', "data-support-panel", "data-copy", "aria-live"):
+    if marker not in html:
+        fail(f"в блоке поддержки отсутствует доступный элемент: {marker}")
+
+for forbidden in ("игры Lesta на Mac", "Genshin"):
+    if forbidden.casefold() in html.casefold():
+        fail(f"в index.html осталось неподтверждённое или старое позиционирование: {forbidden}")
+
 site_js = (ROOT / "assets/site.js").read_text(encoding="utf-8")
 if "releases/latest/download/GameTriathlon.dmg" not in site_js:
     fail("в site.js отсутствует постоянная ссылка на последний DMG")
