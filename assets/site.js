@@ -82,6 +82,31 @@ document.querySelectorAll("[data-year]").forEach((element) => {
   element.textContent = String(new Date().getFullYear());
 });
 
+const gameplayVideo = document.querySelector("[data-gameplay-video]");
+const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+if (gameplayVideo && "IntersectionObserver" in window) {
+  const updateGameplayPlayback = (visible) => {
+    if (visible && !reducedMotion.matches) {
+      gameplayVideo.play().catch(() => {
+        // Браузер может запретить autoplay; poster и controls остаются доступны.
+      });
+    } else {
+      gameplayVideo.pause();
+    }
+  };
+
+  const gameplayObserver = new IntersectionObserver((entries) => {
+    const entry = entries[0];
+    updateGameplayPlayback(entry?.isIntersecting === true && entry.intersectionRatio >= 0.35);
+  }, { threshold: 0.35 });
+
+  gameplayObserver.observe(gameplayVideo);
+  reducedMotion.addEventListener?.("change", () => {
+    updateGameplayPlayback(!reducedMotion.matches && gameplayVideo.getBoundingClientRect().top < window.innerHeight && gameplayVideo.getBoundingClientRect().bottom > 0);
+  });
+}
+
 function validRelease(value) {
   return value && value.available === true
     && typeof value.version === "string" && value.version.length > 0

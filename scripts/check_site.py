@@ -58,6 +58,37 @@ for asset in ("assets/styles.css", "assets/site.js"):
     if not re.search(rf'(?:href|src)="{re.escape(asset)}\?v=[^"]+"', html):
         fail(f"ресурс {asset} подключён без версии для сброса кеша")
 
+gameplay_markers = (
+    '<video class="gameplay-video"',
+    'poster="assets/media/gameplay-poster.webp"',
+    'src="assets/media/gameplay.webm" type="video/webm"',
+    'src="assets/media/gameplay.mp4" type="video/mp4"',
+    'src="assets/media/hangar.webp"',
+    'alt="Ангар «Мира танков» на Mac"',
+)
+for marker in gameplay_markers:
+    if marker not in html:
+        fail(f"в секции геймплея отсутствует медиамаркер: {marker}")
+
+if "data-gameplay-video" not in html or "IntersectionObserver" not in site_js:
+    fail("видео геймплея не управляется с учётом видимости секции")
+if "prefers-reduced-motion: reduce" not in site_js:
+    fail("видео геймплея не учитывает настройку уменьшения движения")
+if any((ROOT / "assets").rglob("*.mtreplay")):
+    fail("исходный реплей не должен публиковаться в assets")
+
+for relative, limit in {
+    "assets/media/gameplay.mp4": 10_000_000,
+    "assets/media/gameplay.webm": 10_000_000,
+    "assets/media/gameplay-poster.webp": 1_000_000,
+    "assets/media/hangar.webp": 1_000_000,
+}.items():
+    media = ROOT / relative
+    if not media.is_file():
+        fail(f"не найден медиаресурс: {relative}")
+    if media.stat().st_size > limit:
+        fail(f"медиаресурс слишком большой: {relative}")
+
 if "http://" in html:
     fail("в index.html обнаружена небезопасная HTTP-ссылка")
 

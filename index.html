@@ -15,8 +15,8 @@
   <meta name="twitter:card" content="summary">
   <link rel="canonical" href="https://gametriathlon.github.io/">
   <link rel="icon" href="assets/images/app-icon.png" type="image/png">
-  <link rel="stylesheet" href="assets/styles.css?v=20260907-2">
-  <script src="assets/site.js?v=20260907-2" defer></script>
+  <link rel="stylesheet" href="assets/styles.css?v=20260907-3">
+  <script src="assets/site.js?v=20260907-3" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Перейти к содержимому</a>
@@ -168,16 +168,20 @@
         <div class="section-heading">
           <p class="eyebrow"><span></span> В движении</p>
           <h2>Геймплей на Apple Silicon</h2>
-          <p>Здесь скоро появятся записи игрового процесса и скриншоты.</p>
+          <p>Настоящий игровой процесс «Мира танков» на Mac с Apple Silicon.</p>
         </div>
         <div class="media-grid">
-          <div class="media-main media-placeholder">
-            <span class="play-mark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 7 8 5-8 5z"/></svg></span>
-            <div><strong>Видео геймплея</strong><small>Скоро</small></div>
-          </div>
+          <figure class="media-main media-card">
+            <video class="gameplay-video" data-gameplay-video muted loop playsinline controls preload="metadata" poster="assets/media/gameplay-poster.webp" aria-label="Фрагмент боя в «Мире танков» на Mac">
+              <source src="assets/media/gameplay.webm" type="video/webm">
+              <source src="assets/media/gameplay.mp4" type="video/mp4">
+              Ваш браузер не поддерживает встроенное видео.
+            </video>
+            <figcaption><strong>«Мир танков» в бою</strong><small>Записано на Apple Silicon</small></figcaption>
+          </figure>
           <div class="media-side">
-            <div class="media-placeholder"><span class="scan-lines"></span><div><strong>Ангар</strong><small>Скриншот скоро</small></div></div>
-            <div class="media-placeholder"><span class="scan-lines"></span><div><strong>В бою</strong><small>Скриншот скоро</small></div></div>
+            <figure class="media-card"><img src="assets/media/hangar.webp" alt="Ангар «Мира танков» на Mac" loading="lazy" width="1600" height="1041"><figcaption><strong>Ангар</strong><small>«Мир танков»</small></figcaption></figure>
+            <figure class="media-card"><img src="assets/media/gameplay-poster.webp" alt="Танк Type 58 в бою на карте Химмельсдорф" loading="lazy" width="1280" height="832"><figcaption><strong>В бою</strong><small>DXMT · Metal</small></figcaption></figure>
           </div>
         </div>
       </div>
