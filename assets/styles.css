@@ -121,7 +121,7 @@ svg { fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round
 .support-heart svg { width: 34px; height: 34px; }
 .support-card h2 { margin: 0 0 8px; font-size: 35px; }
 .support-card p:not(.eyebrow) { margin: 0; max-width: 670px; color: #bba9ae; line-height: 1.55; }
-.support-tabs { margin: 34px 0 18px; padding: 5px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px; border: 1px solid rgba(255,161,170,.16); border-radius: 15px; background: rgba(5,13,22,.42); }
+.support-tabs { margin: 34px 0 18px; padding: 5px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 5px; border: 1px solid rgba(255,161,170,.16); border-radius: 15px; background: rgba(5,13,22,.42); }
 .support-tab { min-height: 42px; border: 0; border-radius: 11px; color: #bba9ae; background: transparent; cursor: pointer; font-size: 14px; font-weight: 750; transition: color .2s, background .2s, box-shadow .2s; }
 .support-tab:hover { color: white; }
 .support-tab.is-active { color: #2b1117; background: linear-gradient(135deg,#ffd0d3,#ed91a0); box-shadow: 0 7px 20px rgba(222,84,108,.17); }

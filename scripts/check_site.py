@@ -46,9 +46,18 @@ section_positions = [html.find(f'id="{section_id}"') for section_id in ("top", "
 if any(position < 0 for position in section_positions) or section_positions != sorted(section_positions):
     fail("секции должны идти в порядке: top → support → games")
 
-for forbidden in ("игры Lesta на Mac", "Genshin"):
+for forbidden in (
+    "игры Lesta на Mac",
+    "Genshin",
+    "Сбер · МИР",
+    'data-support-tab="card"',
+    'data-support-panel="card"',
+):
     if forbidden.casefold() in html.casefold():
         fail(f"в index.html осталось неподтверждённое или старое позиционирование: {forbidden}")
+
+if re.search(r"\b(?:\d{4}[\s-]*){3}\d{4}\b", html):
+    fail("в index.html обнаружен 16-значный номер карты")
 
 site_js = (ROOT / "assets/site.js").read_text(encoding="utf-8")
 site_css = (ROOT / "assets/styles.css").read_text(encoding="utf-8")
