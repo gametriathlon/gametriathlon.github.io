@@ -24,12 +24,14 @@ jobs:
       - name: Check site
         run: python3 scripts/check_site.py
 
+      - name: Test site artifact builder
+        run: ./scripts/test_build_site.sh
+
       - name: Prepare artifact
-        run: |
-          mkdir -p _site/assets/images
-          cp index.html licenses.html styles.css release.json _site/
-          cp assets/styles.css assets/site.js _site/assets/
-          cp assets/images/app-icon.png _site/assets/images/
+        run: ./scripts/build_site.sh _site
+
+      - name: Check prepared artifact
+        run: python3 scripts/check_site.py _site
 
       - name: Configure Pages
         uses: actions/configure-pages@v5

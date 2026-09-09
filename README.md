@@ -24,7 +24,13 @@ python3 -m http.server 8000
 
 ```bash
 python3 scripts/check_site.py
+scripts/test_build_site.sh
 ```
+
+GitHub Pages публикуется только workflow `.github/workflows/pages.yml`. Он
+формирует отдельный `_site` по явному списку файлов, повторно проверяет готовый
+артефакт и лишь затем передаёт его в Pages. В настройках репозитория источником
+должен быть выбран `GitHub Actions`, а не ветка `main`.
 
 ## Публикация релиза
 

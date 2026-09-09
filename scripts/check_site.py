@@ -9,7 +9,16 @@ import sys
 from pathlib import Path
 
 
-ROOT = Path(__file__).resolve().parents[1]
+SOURCE_ROOT = Path(__file__).resolve().parents[1]
+if len(sys.argv) > 2:
+    print(f"usage: {Path(sys.argv[0]).name} [SITE_ROOT]", file=sys.stderr)
+    raise SystemExit(2)
+
+checking_artifact = len(sys.argv) == 2
+ROOT = Path(sys.argv[1]).resolve() if checking_artifact else SOURCE_ROOT
+if not ROOT.is_dir():
+    print(f"error: каталог сайта не найден: {ROOT}", file=sys.stderr)
+    raise SystemExit(1)
 INDEX = ROOT / "index.html"
 
 
@@ -143,8 +152,9 @@ public_text_files = (
     ROOT / "assets/styles.css",
     ROOT / "assets/site.js",
     ROOT / "release.json",
-    ROOT / "README.md",
 )
+if not checking_artifact:
+    public_text_files += (ROOT / "README.md",)
 for forbidden in ("Sources/GameTriathlon", "Application Support/GameTriathlon", "git@github.com:frol555"):
     for path in public_text_files:
         content = path.read_text(encoding="utf-8")
