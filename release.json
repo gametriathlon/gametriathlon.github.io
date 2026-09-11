@@ -1,7 +1,13 @@
 {
-  "available": false,
-  "version": "",
-  "date": "",
-  "size": "",
-  "changes": []
+  "available": true,
+  "version": "0.1.1",
+  "date": "12 сентября 2026",
+  "size": "760 МБ",
+  "download": "https://github.com/gametriathlon/gametriathlon.github.io/releases/download/v0.1.1/Game-Triathlon-0.1.1.dmg",
+  "changes": [
+    "Встроенный Wine на основе CrossOver 26.3",
+    "DXMT с исправлением Stream Output и резервный DXVK",
+    "Автоматическая установка и запуск Lesta Game Center",
+    "Поддержка «Мира танков», «Мира кораблей» и Tanks Blitz"
+  ]
 }

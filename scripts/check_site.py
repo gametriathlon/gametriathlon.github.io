@@ -70,9 +70,6 @@ if re.search(r"\b(?:\d{4}[\s-]*){3}\d{4}\b", html):
 
 site_js = (ROOT / "assets/site.js").read_text(encoding="utf-8")
 site_css = (ROOT / "assets/styles.css").read_text(encoding="utf-8")
-if "releases/latest/download/GameTriathlon.dmg" not in site_js:
-    fail("в site.js отсутствует постоянная ссылка на последний DMG")
-
 for asset in ("assets/styles.css", "assets/site.js"):
     if not re.search(rf'(?:href|src)="{re.escape(asset)}\?v=[^"]+"', html):
         fail(f"ресурс {asset} подключён без версии для сброса кеша")
@@ -133,17 +130,21 @@ try:
 except (OSError, json.JSONDecodeError) as error:
     fail(f"release.json не читается: {error}")
 
-required_release_keys = {"available", "version", "date", "size", "changes"}
+required_release_keys = {"available", "version", "date", "size", "download", "changes"}
 if set(release) != required_release_keys:
     fail("release.json содержит неверный набор полей")
 if not isinstance(release["available"], bool):
     fail("release.available должен быть boolean")
-if not all(isinstance(release[key], str) for key in ("version", "date", "size")):
-    fail("version, date и size должны быть строками")
+if not all(isinstance(release[key], str) for key in ("version", "date", "size", "download")):
+    fail("version, date, size и download должны быть строками")
 if not isinstance(release["changes"], list) or not all(isinstance(item, str) for item in release["changes"]):
     fail("changes должен быть массивом строк")
-if release["available"] and not all((release["version"], release["date"], release["size"], release["changes"])):
+if release["available"] and not all((release["version"], release["date"], release["size"], release["download"], release["changes"])):
     fail("доступный релиз должен содержать все отображаемые данные")
+if release["available"] and not release["download"].startswith(
+    "https://github.com/gametriathlon/gametriathlon.github.io/releases/download/"
+):
+    fail("download должен вести на файл опубликованного GitHub Release")
 
 public_text_files = (
     INDEX,

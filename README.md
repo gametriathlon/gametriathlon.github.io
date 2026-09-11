@@ -34,6 +34,6 @@ GitHub Pages публикуется только workflow `.github/workflows/pag
 
 ## Публикация релиза
 
-Создайте GitHub Release с тегом `vX.Y.Z` и загрузите DMG под неизменным именем
-`GameTriathlon.dmg`. Затем обновите `release.json`: установите `available` в
-`true`, укажите версию, дату, размер и краткий список изменений.
+Создайте GitHub Release с тегом `vX.Y.Z` и загрузите версионный DMG. Затем
+обновите `release.json`: установите `available` в `true`, укажите версию, дату,
+размер, прямую ссылку `download` на DMG и краткий список изменений.

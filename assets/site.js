@@ -1,5 +1,3 @@
-const downloadURL = "https://github.com/gametriathlon/gametriathlon.github.io/releases/latest/download/GameTriathlon.dmg";
-
 const menuButton = document.querySelector("[data-menu-toggle]");
 const menu = document.querySelector("[data-menu]");
 
@@ -138,6 +136,7 @@ function validRelease(value) {
     && typeof value.version === "string" && value.version.length > 0
     && typeof value.date === "string" && value.date.length > 0
     && typeof value.size === "string" && value.size.length > 0
+    && typeof value.download === "string" && value.download.startsWith("https://github.com/gametriathlon/gametriathlon.github.io/releases/download/")
     && Array.isArray(value.changes) && value.changes.every((item) => typeof item === "string");
 }
 
@@ -145,7 +144,7 @@ function applyRelease(release) {
   if (!validRelease(release)) return;
 
   document.querySelectorAll("[data-download]").forEach((link) => {
-    link.href = downloadURL;
+    link.href = release.download;
     link.removeAttribute("aria-disabled");
     link.classList.remove("is-disabled");
   });
