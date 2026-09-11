@@ -40,8 +40,8 @@ required_text = (
     "macOS 26+",
     "gametriathlon@yandex.com",
     "pay.cloudtips.ru/p/ef916df9",
-    "0x1fb78e0ff7c89656a00cd696e1b5ce9c070e50da",
-    "1NEGf85SvXb1PGvRmXdgd9F5bgiXCj26Am",
+    "0x27761afc6b5ac967888d84c2d5a612c50018a068",
+    "bc1qhl3lvkcwkhywe4c87dkq8eklwwn3tvt4s2gnzc",
 )
 for text in required_text:
     if text not in html:
