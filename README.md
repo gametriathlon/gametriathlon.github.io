@@ -2,7 +2,7 @@
 
 Публичный лендинг и релизы Game Triathlon: приложения для запуска совместимых
 Windows-игр на Mac с Apple Silicon. Сейчас проверены «Мир танков»,
-«Мир кораблей» и Tanks Blitz.
+«Мир кораблей», Tanks Blitz и «Русская Рыбалка 4».
 
 - Сайт: <https://gametriathlon.github.io>
 - Релизы: <https://github.com/gametriathlon/gametriathlon.github.io/releases>

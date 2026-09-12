@@ -37,6 +37,7 @@ required_text = (
     "Мир танков",
     "Мир кораблей",
     "Tanks Blitz",
+    "Русская Рыбалка 4",
     "macOS 26+",
     "gametriathlon@yandex.com",
     "pay.cloudtips.ru/p/ef916df9",
@@ -70,6 +71,9 @@ if re.search(r"\b(?:\d{4}[\s-]*){3}\d{4}\b", html):
 
 site_js = (ROOT / "assets/site.js").read_text(encoding="utf-8")
 site_css = (ROOT / "assets/styles.css").read_text(encoding="utf-8")
+if "link.href = release.download" not in site_js:
+    fail("site.js не использует ссылку на DMG из release.json")
+
 for asset in ("assets/styles.css", "assets/site.js"):
     if not re.search(rf'(?:href|src)="{re.escape(asset)}\?v=[^"]+"', html):
         fail(f"ресурс {asset} подключён без версии для сброса кеша")
@@ -83,6 +87,10 @@ gameplay_markers = (
     'alt="Ангар «Мира танков» на Mac"',
     'data-lightbox-src="assets/media/hangar.webp"',
     'data-lightbox-src="assets/media/gameplay-poster.webp"',
+    'src="assets/media/rf4-launcher.webp"',
+    'src="assets/media/rf4-gameplay.webp"',
+    'data-lightbox-src="assets/media/rf4-launcher.webp"',
+    'data-lightbox-src="assets/media/rf4-gameplay.webp"',
     '<dialog class="media-lightbox"',
     'data-lightbox-image',
 )
@@ -107,6 +115,8 @@ for relative, limit in {
     "assets/media/gameplay.webm": 10_000_000,
     "assets/media/gameplay-poster.webp": 1_000_000,
     "assets/media/hangar.webp": 1_000_000,
+    "assets/media/rf4-launcher.webp": 1_000_000,
+    "assets/media/rf4-gameplay.webp": 1_000_000,
 }.items():
     media = ROOT / relative
     if not media.is_file():

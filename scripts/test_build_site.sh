@@ -15,6 +15,8 @@ assets/media/gameplay-poster.webp
 assets/media/gameplay.mp4
 assets/media/gameplay.webm
 assets/media/hangar.webp
+assets/media/rf4-gameplay.webp
+assets/media/rf4-launcher.webp
 assets/site.js
 assets/styles.css
 index.html

@@ -28,6 +28,8 @@ files=(
   assets/media/gameplay.webm
   assets/media/gameplay-poster.webp
   assets/media/hangar.webp
+  assets/media/rf4-launcher.webp
+  assets/media/rf4-gameplay.webp
 )
 
 mkdir -p "$output"
